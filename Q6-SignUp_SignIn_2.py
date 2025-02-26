@@ -10,6 +10,9 @@ def signIn():
             print(l[i])
             print(f"{email} is not registered, please signUp first.")
             return
+        elif email.endswith(".com")!=True:
+            print(f"Wrong  email entered please Try Again")
+            return
         else:
             if(l[i]['password']!=password):
                 print("Incorrect password.")
@@ -23,8 +26,11 @@ def signUp():
     password=input("Enter your password: ")
     database["email"] = email
     database["password"] = password
-    l.append(database)
-    print("Signup successfull.")
+   if email.endswith(".com")==True:
+        l.append(database)
+        print("Signup successfull.")
+    else:
+        print(f"Wrong  email entered please Try Again")
     return
 def show():
     table.field_names=(["EMAIL","PASSWORD"])
